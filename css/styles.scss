@@ -1,0 +1,33 @@
+html,
+body {
+  background: #473968;
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-table {
+  display: table;
+}
+.vertical-center-row {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.main-content {
+  margin-bottom: 10em;
+}
+
+.name {
+  text-align: center;
+}
+
+img.me {
+  height: 250px;
+  border-radius: 100%;
+}
