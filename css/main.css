@@ -17,7 +17,15 @@ body {
   vertical-align: middle; }
 
 .main-content {
-  margin-bottom: 10em; }
+  margin-bottom: 10em;
+  z-index: 1; }
+
+.container-canvas {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; }
 
 .name {
   text-align: center; }
