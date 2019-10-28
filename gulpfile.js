@@ -23,6 +23,7 @@ const newer = require('gulp-newer');
 var paths = {
   templates: 'views',
   js: 'js',
+  cname: 'CNAME',
   css: 'css',
   img: 'img',
   files: 'public',
@@ -32,6 +33,7 @@ var paths = {
   },
   init: function () {
     this.src.sass = this.css + '/main.scss';
+    this.src.cname = this.cname;
     this.src.csslibs = this.css + '/libs/**/*';
     this.src.templates = this.templates + '/**/*.hbs';
     this.src.javascript = [this.js + '/**/*.js', '!' + this.js + '/libs/*.js'];
@@ -39,12 +41,13 @@ var paths = {
     this.src.images = this.img + '/**/*.{jpg,jpeg,svg,png,gif}';
     this.src.files = this.files + '/**/*';
 
+    this.dist.cname = this.dist.root;
     this.dist.css = this.dist.root + '/css';
     this.dist.csslibs = this.dist.root + '/css/libs';
     this.dist.images = this.dist.root + '/img';
     this.dist.javascript = this.dist.root + '/js';
     this.dist.jslibs = this.dist.root + '/js/libs';
-    this.dist.files = this.dist.root + ''
+    this.dist.files = this.dist.root + '';
 
     return this;
   },
@@ -140,9 +143,13 @@ gulp.task('images', () => {
 });
 
 gulp.task('files', () => {
-  console.log(paths.src.files);
   gulp.src([paths.src.files])
     .pipe(gulp.dest(paths.dist.files));
+});
+
+gulp.task('cname', () => {
+  gulp.src([paths.src.cname])
+    .pipe(gulp.dest(paths.dist.cname));
 });
 
 watch(paths.src.images, () => {
@@ -157,6 +164,7 @@ gulp.task('watch', () => {
   gulp.watch(paths.css + '/**/*.scss', ['styles']);
   gulp.watch(paths.src.javascript, ['scripts']);
   gulp.watch(paths.src.templates, ['templates']);
+  gulp.watch(paths.src.cname, ['cname']);
 });
 
 gulp.task('deploy', () => {
@@ -170,4 +178,4 @@ gulp.task('clean', () => {
   ]);
 });
 
-gulp.task('default', ['watch', 'serve', 'images', 'files', 'styles', 'scripts', 'templates']);
+gulp.task('default', ['watch', 'serve', 'images', 'files', 'styles', 'scripts', 'templates', 'cname']);
