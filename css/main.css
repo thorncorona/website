@@ -1,10 +1,10 @@
 html,
 body {
   background: #473968;
-  height: 100%; }
+  min-height: 100%; }
 
 .container {
-  height: 100%;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -21,7 +21,7 @@ body {
   z-index: 1; }
 
 .container-canvas {
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -33,6 +33,15 @@ body {
 img.me {
   height: 250px;
   border-radius: 100%; }
+
+.img-container {
+  text-align: center;
+  display: block; }
+
+.description {
+  text-align: center;
+  width: 70%;
+  margin: 0 auto; }
 
 /*
 	Hyperspace by HTML5 UP
